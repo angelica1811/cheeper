@@ -18,7 +18,7 @@ newCheep.addEventListener("submit", (event)=>{
 
     let isFormValid = true
 
-    let isCheepValid = isValueNotEmpty(text)
+    let isCheepValid = isValueNotEmpty(text) && cheepCharLimit(text)
     if (!isCheepValid){
         textElement.classList.add ('is-invalid')
         isFormValid = false
@@ -26,11 +26,36 @@ newCheep.addEventListener("submit", (event)=>{
     else {
         textElement.classList.remove ('is-invalid')
     }
+
+
+    let isGifValid = isValueNotEmpty(gif)
+    if (!isGifValid){
+        textElement.classList.add ('is-invalid')
+        isFormValid = false
+    }
+    else {
+        textElement.classList.remove ('is-invalid')
+    }
+
+
+
+    // //add cheep
+    // addCheep(text, gif)
+
+    // event.target.elements["text"].value = ""
+    // event.target.elements["gif"].value = ""
 })
 
 
 const isValueNotEmpty = (value) => {
     if (value !== "") {
+        return true
+    }
+    return false
+}
+
+const cheepCharLimit = (value) => {
+    if (value < 50){
         return true
     }
     return false
